@@ -18,24 +18,46 @@
 
 //    });
 //}
-function RemoveProduct(id,type) {
+//function RemoveProduct(id,type) {
 
-    let removeProductVM = {
-        Id: id,
-        Type: type
+//    let removeProductVM = {
+//        Id: id,
+//        Type: type
+//    }
+//    $.ajax({
+//        type: 'POST',
+//        url: '/Product/RemoveProduct',
+//        data: removeProductVM,
+//        success: function (response) {
+//            if (response == "Ok") {
+//                GetProductList('');
+//                $("#all").addClass('active');
+//            }
+//        },
+//    });
+
+//}
+
+function RemoveProduct(id, type) {
+
+    var confirmation = confirm("Ürünü kaldırmak istediğinizden emin misiniz?");
+    if (confirmation) {
+        let removeProductVM = {
+            Id: id,
+            Type: type
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/Product/RemoveProduct',
+            data: removeProductVM,
+            success: function (response) {
+                if (response == "Ok") {
+                    GetProductList('');
+                    $("#all").addClass('active');
+                }
+            },
+        });
     }
-    $.ajax({
-        type: 'POST',
-        url: '/Product/RemoveProduct',
-        data: removeProductVM,
-        success: function (response) {
-            if (response == "Ok") {
-                GetProductList('');
-                $("#all").addClass('active');
-            }
-        },
-    });
-
 }
 
 
